@@ -1,0 +1,6 @@
+@import "@repo/styles";
+
+:root {
+  --btn-default: 44px;
+  --label-default: 14px;
+}

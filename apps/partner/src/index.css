@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import "@repo/styles";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --btn-default: 28px;
+  --font-default: 12px;
+  --label-default: 12px;
+  --placeholder-default: 12px;
+  --input-label: #919ca4;
+  --spacing: 0.25rem;
+}
+
+@theme {
+  --color-input-label: var(--input-label);
+  --inset-shadow-md: 0 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ProseMirror p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}

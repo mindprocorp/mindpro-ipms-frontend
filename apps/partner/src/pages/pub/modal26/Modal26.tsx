@@ -1,0 +1,103 @@
+import { data, TestSchema, type TestData, type TestFormInput } from "../schema";
+import {
+  Button,
+  DataTable,
+  FlexBox,
+  FormDialog,
+  getColumns,
+  GN,
+  Icons,
+  RHF,
+  Separator,
+} from "@repo/ui";
+import type { ModalProps } from "@repo/schema";
+import { columnsData } from "./columns/columnsData";
+import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+export const Modal26 = ({ title, open, onOpenChange, onSuccess }: ModalProps) => {
+  const form = useForm<TestFormInput>({
+    resolver: zodResolver(TestSchema),
+    defaultValues: TestSchema.parse({}),
+  });
+  const onSubmit = () => {
+    console.log("클릭이요");
+    onOpenChange(false);
+    // onSuccess?.();
+  };
+
+  const checkOptions = Array.from({ length: 20 }).map((item, index) => {
+    return { label: `계류법정 ${index + 1}`, value: `v-${index + 1}` };
+  });
+
+  const columns = getColumns<TestData>(columnsData);
+
+  return (
+    <FormProvider {...form}>
+      <FormDialog
+        title={title}
+        onSubmit={onSubmit}
+        submitText="저장"
+        open={open}
+        onOpenChange={onOpenChange}
+        className="max-w-100!"
+      >
+        <FlexBox vertical>
+          <FlexBox>
+            <RHF.FormDatePicker control={form.control} name="testVal" label="수표수령일" />
+            <RHF.FormDatePicker control={form.control} name="testVal" label="입금일" />
+          </FlexBox>
+
+          <FlexBox>
+            <RHF.FormDatePicker control={form.control} name="testVal" label="환율적용일" />
+            <RHF.Input control={form.control} name="testVal" label="환율" />
+          </FlexBox>
+
+          <FlexBox>
+            <RHF.Input control={form.control} name="testVal" label="입금액" />
+            <RHF.Input control={form.control} name="testVal" label="입금수수료" />
+          </FlexBox>
+
+          <RHF.Input control={form.control} name="testVal" label="환산액" />
+
+          <FlexBox>
+            <RHF.FormSelect
+              control={form.control}
+              name="testVal"
+              items={[
+                {
+                  value: "next.js",
+                  label: "Next.js",
+                },
+                {
+                  value: "sveltekit",
+                  label: "SvelteKit",
+                },
+              ]}
+              label="입금방법"
+            />
+
+            <RHF.FormSelect
+              control={form.control}
+              name="testVal"
+              items={[
+                {
+                  value: "next.js",
+                  label: "Next.js",
+                },
+                {
+                  value: "sveltekit",
+                  label: "SvelteKit",
+                },
+              ]}
+              label="은행"
+            />
+          </FlexBox>
+
+          <RHF.FormTextarea control={form.control} name="testVal" label="비고" />
+        </FlexBox>
+      </FormDialog>
+    </FormProvider>
+  );
+};

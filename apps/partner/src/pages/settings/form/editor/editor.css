@@ -1,0 +1,79 @@
+/* TipTap 에디터 */
+.tiptap-editor .tiptap {
+  outline: none;
+  min-height: 400px;
+}
+
+.tiptap-editor .tiptap > * + * {
+  margin-top: 0.5rem;
+}
+
+/* placeholder */
+.tiptap-editor .tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+  font-size: 0.875rem;
+}
+
+/* 테이블 */
+.tiptap-editor .tiptap table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.75rem 0;
+  table-layout: fixed;
+}
+
+.tiptap-editor .tiptap table td,
+.tiptap-editor .tiptap table th {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem 0.75rem;
+  min-width: 80px;
+  font-size: 0.875rem;
+  vertical-align: top;
+  position: relative;
+}
+
+.tiptap-editor .tiptap table th {
+  background-color: #f9fafb;
+  font-weight: 500;
+}
+
+/* 테이블 선택 */
+.tiptap-editor .tiptap table .selectedCell {
+  background-color: #dbeafe;
+}
+
+/* 리스트 */
+.tiptap-editor .tiptap ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.tiptap-editor .tiptap ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+/* 구분선 */
+.tiptap-editor .tiptap hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 1rem 0;
+}
+
+/* 선택된 노드 */
+.tiptap-editor .tiptap .ProseMirror-selectednode {
+  outline: none;
+}
+
+/* 폼 블록 내부 드래그 핸들 */
+.tiptap-editor .tiptap [data-drag-handle] {
+  cursor: grab;
+}
+
+.tiptap-editor .tiptap [data-drag-handle]:active {
+  cursor: grabbing;
+}

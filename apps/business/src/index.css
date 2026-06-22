@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "@repo/styles";
+
+:root {
+  --btn-default: 36px;
+  --font-default: 14px;
+  --label-default: 12px;
+  --placeholder-default: 14px;
+  --input-label: #919ca4;
+  --spacing: 0.25rem;
+}
+
+@theme {
+  --color-input-label: var(--input-label);
+  --inset-shadow-md: 0 0px 5px rgba(0, 0, 0, 0.1);
+}
